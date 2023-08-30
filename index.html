@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GIF Viewer</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: black;
+      overflow: hidden;
+      position: relative;
+    }
+    iframe {
+      width: 60%;
+      height: 60%;
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #gifContainer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .gifButton {
+      margin: 10px;
+      cursor: pointer;
+      color: white;
+      text-decoration: underline;
+    }
+    #backButton {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+      color: white;
+      text-decoration: underline;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="gifContainer">
+    <div class="gifButton" onclick="showGif('Unlockme.gif')">Unlock Me</div>
+    <div class="gifButton" onclick="showGif('Innervoice.gif')">Inner Voice</div>
+    <!-- Add more buttons and GIFs as needed -->
+  </div>
+  <iframe id="gifFrame" frameborder="0"></iframe>
+  <div id="backButton" onclick="goBack()">Back</div>
+  <script>
+    function showGif(gifName) {
+      var gifFrame = document.getElementById('gifFrame');
+      gifFrame.src = gifName;
+      gifFrame.style.display = 'block';
+      gifFrame.style.top = '50%';
+      gifFrame.style.left = '50%';
+      document.getElementById('gifContainer').style.display = 'none';
+      document.getElementById('backButton').style.display = 'block';
+    }
+    function goBack() {
+      document.getElementById('gifFrame').style.display = 'none';
+      document.getElementById('gifContainer').style.display = 'block';
+      document.getElementById('backButton').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
