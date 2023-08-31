@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NFC GIF Trigger</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: black;
+      overflow: hidden;
+    }
+    .gif-container {
+      text-align: center;
+    }
+    img {
+      width: 400px; /* Width remains the same */
+      height: auto; /* Height adjusts proportionally */
+      display: none;
+    }
+    .gif-button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: black;
+      border: none;
+      cursor: pointer;
+      width: 200px; /* Set a fixed width for all buttons */
+    }
+    #aboutButton {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="gif-container">
+    <img id="gif1" src="20230818 people 2.GIF" alt="GIF 1">
+    <button class="gif-button" id="playButton1">People</button>
+    <br>
+    <img id="gif2" src="20200626theeye.GIF" alt="GIF 2">
+    <button class="gif-button" id="playButton2">The Eye</button>
+    <br>
+    <img id="gif3" src="20180326unlockme1mb2.GIF" alt="GIF 3">
+    <button class="gif-button" id="playButton3">Unlock Me Infinity</button>
+    <br>
+    <img id="gif4" src="20180326innervoice1mb2.GIF" alt="GIF 4">
+    <button class="gif-button" id="playButton4">Inner Voice</button>
+    <br>
+    <img id="gif5" src="Infinity.GIF" alt="GIF 5">
+    <button class="gif-button" id="playButton5">Infinity</button>
+    <br>
+    <a href="about_shivani.pdf" target="_blank">
+      <button class="gif-button" id="aboutButton">About Shivani (PDF)</button>
+    </a>
+  </div>
+
+  <script>
+    const gifButtons = document.querySelectorAll('.gif-button');
+    const gifs = document.querySelectorAll('img');
+
+    gifButtons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        if (gifs[index].style.display === 'none') {
+          gifs[index].style.display = 'block';
+        } else {
+          gifs[index].style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
