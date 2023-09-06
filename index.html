@@ -79,39 +79,34 @@
   <script>
     const gifButtons = document.querySelectorAll('.gif-button');
     const gifs = document.querySelectorAll('img');
-    let playing = false; // To track if a GIF is currently playing
 
     gifButtons.forEach((button, index) => {
+      let isPlaying = false; // Track if a GIF is currently playing
+
       button.addEventListener('click', () => {
-        // If a GIF is currently playing, don't allow clicking
-        if (playing) return;
-
-        // Hide all GIFs
-        gifs.forEach((gif) => {
-          gif.style.display = 'none';
-        });
-
-        // Hide all buttons except the clicked one
-        gifButtons.forEach((btn) => {
-          btn.style.display = 'none';
-        });
-
-        // Display the clicked GIF
-        gifs[index].style.display = 'block';
-        button.style.display = 'block';
-        button.classList.add('playing'); // Add the "playing" class to change button style
-        playing = true; // Set playing to true when a GIF is playing
-
-        // Handle going back to the menu
-        button.addEventListener('click', () => {
-          // Show all buttons and hide the GIF
-          gifButtons.forEach((btn) => {
-            btn.style.display = 'block';
+        if (!isPlaying) {
+          // Hide all GIFs
+          gifs.forEach((gif) => {
+            gif.style.display = 'none';
           });
+
+          // Hide all buttons except the clicked one
+          gifButtons.forEach((btn) => {
+            btn.style.display = 'none';
+          });
+
+          // Display the clicked GIF
+          gifs[index].style.display = 'block';
+          button.style.display = 'block';
+          button.classList.add('playing'); // Add the "playing" class to change button style
+          isPlaying = true; // Set isPlaying to true when a GIF is playing
+        } else {
+          // If a GIF is already playing, clicking again will return to the menu
           gifs[index].style.display = 'none';
+          button.style.display = 'block';
           button.classList.remove('playing'); // Remove the "playing" class
-          playing = false; // Set playing to false when returning to the menu
-        });
+          isPlaying = false; // Set isPlaying to false when returning to the menu
+        }
       });
     });
   </script>
