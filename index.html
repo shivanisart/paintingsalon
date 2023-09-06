@@ -9,35 +9,32 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      height: 100vh;
+      min-height: 100vh; /* Use min-height for sticky footer */
       background-color: black;
       overflow: hidden;
+      position: relative;
     }
     .title {
       font-size: 50px;
-      color: white; /* Title text color changed to white */
+      color: white;
       margin-bottom: 20px;
-      text-align: center; /* Center-align the title text */
-    }
-    .line {
-      font-size: 30px;
-      color: grey;
-      margin-bottom: 10px;
-      text-align: center; /* Center-align each line of text */
+      text-align: center;
     }
     .footer {
       font-size: 15px;
       color: white;
       text-align: center;
+      position: absolute; /* Position the footer at the bottom */
+      bottom: 10px; /* Adjust the bottom spacing as needed */
     }
 
     .gif-container {
       text-align: center;
     }
     img {
-      width: 400px; /* Width remains the same */
-      height: auto; /* Height adjusts proportionally */
-      display: none;
+      width: 400px;
+      height: auto;
+      display: none; /* Initially hide all GIFs */
     }
     .gif-button {
       margin-top: 10px;
@@ -46,18 +43,13 @@
       color: black;
       border: none;
       cursor: pointer;
-      width: 200px; /* Set a fixed width for all buttons */
-    }
-    #aboutButton {
-      margin-top: 20px;
+      width: 200px;
     }
   </style>
 </head>
 <body>
   <div class="title">
-    <div>Shivani Mathur</div>
-    <div>Painting Salon. Artquest</div>
-    <div>7th September 2023</div>
+    Shivani Mathur<br>Painting Salon. Artquest<br>7th September 2023
   </div>
   <div class="gif-container">
     <img id="gif1" src="20230818 people 2.GIF" alt="GIF 1">
@@ -74,10 +66,6 @@
     <br>
     <img id="gif5" src="Infinity.GIF" alt="GIF 5">
     <button class="gif-button" id="playButton5">Infinity</button>
-    <br>
-    <a href="about_shivani.pdf" target="_blank">
-      <button class="gif-button" id="aboutButton">About Shivani (PDF)</button>
-    </a>
   </div>
   <div class="footer">
     Copyright Shivani Mathur. All rights reserved.
@@ -89,11 +77,13 @@
 
     gifButtons.forEach((button, index) => {
       button.addEventListener('click', () => {
-        if (gifs[index].style.display === 'none') {
-          gifs[index].style.display = 'block';
-        } else {
-          gifs[index].style.display = 'none';
-        }
+        // Hide all GIFs
+        gifs.forEach((gif) => {
+          gif.style.display = 'none';
+        });
+
+        // Display the clicked GIF
+        gifs[index].style.display = 'block';
       });
     });
   </script>
