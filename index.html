@@ -45,6 +45,10 @@
       cursor: pointer;
       width: 200px;
     }
+    .playing {
+      background-color: green; /* Change button background color when playing */
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -76,21 +80,31 @@
     const gifs = document.querySelectorAll('img');
 
     gifButtons.forEach((button, index) => {
-      let isPlaying = false; // Initialize as not playing
-
       button.addEventListener('click', () => {
-        if (isPlaying) {
-          // Hide the GIF when clicked again
-          gifs[index].style.display = 'none';
-          button.innerText = "Play"; // Change button text to "Play"
-        } else {
-          // Display the clicked GIF
-          gifs[index].style.display = 'block';
-          button.innerText = "Back to Menu"; // Change button text to "Back to Menu"
-        }
+        // Hide all GIFs
+        gifs.forEach((gif) => {
+          gif.style.display = 'none';
+        });
 
-        // Toggle the playing state
-        isPlaying = !isPlaying;
+        // Hide all buttons except the clicked one
+        gifButtons.forEach((btn) => {
+          btn.style.display = 'none';
+        });
+
+        // Display the clicked GIF
+        gifs[index].style.display = 'block';
+        button.style.display = 'block';
+        button.classList.add('playing'); // Add the "playing" class to change button style
+
+        // Handle going back to the menu
+        button.addEventListener('click', () => {
+          // Show all buttons and hide the GIF
+          gifButtons.forEach((btn) => {
+            btn.style.display = 'block';
+          });
+          gifs[index].style.display = 'none';
+          button.classList.remove('playing'); // Remove the "playing" class
+        });
       });
     });
   </script>
