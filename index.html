@@ -84,6 +84,13 @@
 
         // Display the clicked GIF
         gifs[index].style.display = 'block';
+
+        // Hide all buttons except the clicked one
+        gifButtons.forEach((btn, btnIndex) => {
+          if (btnIndex !== index) {
+            btn.style.display = 'none';
+          }
+        });
       });
     });
   </script>
