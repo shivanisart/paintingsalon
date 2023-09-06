@@ -82,20 +82,27 @@
 
     gifButtons.forEach((button, index) => {
       button.addEventListener('click', () => {
-        // Hide all GIFs
-        gifs.forEach((gif) => {
-          gif.style.display = 'none';
-        });
+        if (gifs[index].style.display === 'none') {
+          // Hide all GIFs
+          gifs.forEach((gif) => {
+            gif.style.display = 'none';
+          });
 
-        // Hide all buttons except the clicked one
-        gifButtons.forEach((btn) => {
-          btn.style.display = 'none';
-        });
+          // Show only the clicked GIF
+          gifs[index].style.display = 'block';
 
-        // Display the clicked GIF
-        gifs[index].style.display = 'block';
-        button.style.display = 'block';
-        button.classList.add('playing'); // Add the "playing" class to change button style
+          // Reset all buttons to default style
+          gifButtons.forEach((btn) => {
+            btn.classList.remove('playing');
+          });
+
+          // Highlight the clicked button
+          button.classList.add('playing');
+        } else {
+          // Clicking a playing GIF returns to the menu
+          gifs[index].style.display = 'none';
+          button.classList.remove('playing');
+        }
       });
     });
   </script>
