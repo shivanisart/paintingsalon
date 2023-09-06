@@ -15,7 +15,7 @@
     }
     .title {
       font-size: 50px;
-      color: grey;
+      color: white; /* Title text color changed to white */
       margin-bottom: 20px;
       text-align: center; /* Center-align the title text */
     }
@@ -24,6 +24,11 @@
       color: grey;
       margin-bottom: 10px;
       text-align: center; /* Center-align each line of text */
+    }
+    .footer {
+      font-size: 15px;
+      color: white;
+      text-align: center;
     }
 
     .gif-container {
@@ -50,7 +55,9 @@
 </head>
 <body>
   <div class="title">
-    Shivani Mathur<br>Painting Salon. Artquest <br>7th September 2023
+    <div>Shivani Mathur</div>
+    <div>Painting Salon. Artquest</div>
+    <div>7th September 2023</div>
   </div>
   <div class="gif-container">
     <img id="gif1" src="20230818 people 2.GIF" alt="GIF 1">
@@ -71,6 +78,9 @@
     <a href="about_shivani.pdf" target="_blank">
       <button class="gif-button" id="aboutButton">About Shivani (PDF)</button>
     </a>
+  </div>
+  <div class="footer">
+    Copyright Shivani Mathur. All rights reserved.
   </div>
 
   <script>
