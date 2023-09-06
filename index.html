@@ -76,21 +76,21 @@
     const gifs = document.querySelectorAll('img');
 
     gifButtons.forEach((button, index) => {
+      let isPlaying = false; // Initialize as not playing
+
       button.addEventListener('click', () => {
-        // Hide all GIFs
-        gifs.forEach((gif) => {
-          gif.style.display = 'none';
-        });
+        if (isPlaying) {
+          // Hide the GIF when clicked again
+          gifs[index].style.display = 'none';
+          button.innerText = "Play"; // Change button text to "Play"
+        } else {
+          // Display the clicked GIF
+          gifs[index].style.display = 'block';
+          button.innerText = "Back to Menu"; // Change button text to "Back to Menu"
+        }
 
-        // Display the clicked GIF
-        gifs[index].style.display = 'block';
-
-        // Hide all buttons except the clicked one
-        gifButtons.forEach((btn, btnIndex) => {
-          if (btnIndex !== index) {
-            btn.style.display = 'none';
-          }
-        });
+        // Toggle the playing state
+        isPlaying = !isPlaying;
       });
     });
   </script>
