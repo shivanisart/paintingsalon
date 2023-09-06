@@ -8,9 +8,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column; /* Center content vertically and horizontally */
       height: 100vh;
       background-color: black;
       overflow: hidden;
+    }
+    .title {
+      font-size: 50px;
+      color: grey;
+      margin-bottom: 20px; /* Add some space below the title */
     }
     .gif-container {
       text-align: center;
@@ -35,6 +41,10 @@
   </style>
 </head>
 <body>
+  <div class="title">
+    Shivani Mathur, Painting Salon. Artquest 7th September 2023
+  </div>
+  <div class="gif-container">
   <div class="gif-container">
     <img id="gif1" src="20230818 people 2.GIF" alt="GIF 1">
     <button class="gif-button" id="playButton1">People</button>
