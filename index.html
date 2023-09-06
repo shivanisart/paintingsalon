@@ -9,7 +9,7 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      min-height: 100vh; /* Use min-height for sticky footer */
+      min-height: 100vh;
       background-color: black;
       overflow: hidden;
       position: relative;
@@ -24,8 +24,8 @@
       font-size: 15px;
       color: white;
       text-align: center;
-      position: absolute; /* Position the footer at the bottom */
-      bottom: 10px; /* Adjust the bottom spacing as needed */
+      position: absolute;
+      bottom: 10px;
     }
 
     .gif-container {
@@ -34,7 +34,7 @@
     img {
       width: 400px;
       height: auto;
-      display: none; /* Initially hide all GIFs */
+      display: none;
     }
     .gif-button {
       margin-top: 10px;
@@ -46,9 +46,9 @@
       width: 200px;
     }
     .playing {
-      background-color: green; /* Change button background color when playing */
+      background-color: green;
       color: white;
-      text-align: center; /* Center-align button text */
+      text-align: center;
     }
   </style>
 </head>
@@ -81,32 +81,21 @@
     const gifs = document.querySelectorAll('img');
 
     gifButtons.forEach((button, index) => {
-      let isPlaying = false; // Track if a GIF is currently playing
-
       button.addEventListener('click', () => {
-        if (!isPlaying) {
-          // Hide all GIFs
-          gifs.forEach((gif) => {
-            gif.style.display = 'none';
-          });
+        // Hide all GIFs
+        gifs.forEach((gif) => {
+          gif.style.display = 'none';
+        });
 
-          // Hide all buttons except the clicked one
-          gifButtons.forEach((btn) => {
-            btn.style.display = 'none';
-          });
+        // Hide all buttons except the clicked one
+        gifButtons.forEach((btn) => {
+          btn.style.display = 'none';
+        });
 
-          // Display the clicked GIF
-          gifs[index].style.display = 'block';
-          button.style.display = 'block';
-          button.classList.add('playing'); // Add the "playing" class to change button style
-          isPlaying = true; // Set isPlaying to true when a GIF is playing
-        } else {
-          // If a GIF is already playing, clicking again will return to the menu
-          gifs[index].style.display = 'none';
-          button.style.display = 'block';
-          button.classList.remove('playing'); // Remove the "playing" class
-          isPlaying = false; // Set isPlaying to false when returning to the menu
-        }
+        // Display the clicked GIF
+        gifs[index].style.display = 'block';
+        button.style.display = 'block';
+        button.classList.add('playing'); // Add the "playing" class to change button style
       });
     });
   </script>
