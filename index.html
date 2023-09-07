@@ -46,10 +46,10 @@
       width: 200px;
     }
     .playing {
-      background-color: black
-      ;
+      background-color: black;
       color: white;
       text-align: center;
+      /* Center-align the button */
     }
   </style>
 </head>
@@ -76,6 +76,9 @@
   <div class="footer">
     Copyright Shivani Mathur. All rights reserved.
   </div>
+  <a href="about_shivani.pdf" target="_blank">
+    <button class="gif-button" id="aboutButton">About Shivani (PDF)</button>
+  </a>
 
   <script>
     const gifButtons = document.querySelectorAll('.gif-button');
@@ -83,35 +86,28 @@
 
     gifButtons.forEach((button, index) => {
       button.addEventListener('click', () => {
-        if (gifs[index].style.display === 'none') {
+        if (!button.classList.contains('playing')) {
           // Hide all GIFs
           gifs.forEach((gif) => {
             gif.style.display = 'none';
           });
 
-          // Hide all buttons except the clicked one
-          gifButtons.forEach((btn, btnIndex) => {
-            if (btnIndex !== index) {
-              btn.style.display = 'none';
-            }
+          // Reset all buttons to default style
+          gifButtons.forEach((btn) => {
+            btn.classList.remove('playing');
+            btn.style.display = 'block'; // Make all buttons visible initially
           });
 
           // Show only the clicked GIF
           gifs[index].style.display = 'block';
-
-          // Reset all buttons to default style
-          gifButtons.forEach((btn) => {
-            btn.classList.remove('playing');
-          });
 
           // Highlight the clicked button
           button.classList.add('playing');
         } else {
           // Clicking a playing GIF returns to the menu
           gifs[index].style.display = 'none';
-          gifButtons.forEach((btn) => {
-            btn.style.display = 'block';
-          });
+
+          // Reset the button style
           button.classList.remove('playing');
         }
       });
