@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shivani Mathur 2023 Painting Salon</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: black;
+      overflow: hidden;
+      position: relative;
+    }
+    .title {
+      font-size: 50px;
+      color: white;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .footer {
+      font-size: 15px;
+      color: white;
+      text-align: center;
+      position: absolute;
+      bottom: 10px;
+    }
+
+    /* Center the buttons horizontally and vertically */
+    /* Center the buttons horizontally */
+    .gif-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Ensure uniform width for GIF displays */
+    img {
+      width: 100%; /* Set width to 100% to maintain uniform size */
+      max-width: 400px; /* Set a maximum width for larger screens */
+      height: auto;
+      display: none;
+    }
+
+    .gif-button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: black;
+      border: none;
+      cursor: pointer;
+      width: 150px;
+    }
+    .playing {
+      background-color: #19543E;
+      color: white;
+      text-align: center;
+    }
+    .hidden {
+      display: none;
+    }
+    .back-button {
+    margin: 0 auto; /* Center all "Back" buttons horizontally */
+    display: none; /* Initially hide all "Back" buttons */
+  }
+
+}
+
+  </style>
+</head>
+<body>
+  <div class="title">
+    Shivani Mathur<br>Painting Salon. Artquest<br>7th September 2023
+  </div>
+  <div class="gif-container">
+    <img id="gif1" src="20230818 people 2.GIF" alt="GIF 1">
+    <button class="gif-button" id="playButton1">People</button>
+    <br>
+    <img id="gif2" src="20200626theeye.GIF" alt="GIF 2">
+    <button class="gif-button" id="playButton2">The Eye</button>
+    <br>
+    <img id="gif3" src="20180326unlockme1mb2.GIF" alt="GIF 3">
+    <button class="gif-button" id="playButton3">Unlock Me</button>
+    <br>
+    <img id="gif4" src="20180326innervoice1mb2.GIF" alt="GIF 4">
+    <button class="gif-button" id="playButton4">Inner Voice</button>
+    <br>
+    <img id="gif5" src="Infinity.GIF" alt="GIF 5">
+    <button class="gif-button" id="playButton5">Infinity</button>
+  </div>
+  <div class="footer">
+    Copyright Shivani Mathur. All rights reserved.
+  </div>
+  <a href="about_shivani.pdf" target="_blank">
+    <button class="gif-button" id="aboutButton">About Shivani (PDF)</button>
+  </a>
+
+  <script>
+    const gifButtons = document.querySelectorAll('.gif-button');
+    const gifs = document.querySelectorAll('img');
+    const aboutButton = document.getElementById('aboutButton');
+
+    gifButtons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        if (!button.classList.contains('playing')) {
+          // Hide all GIFs
+          gifs.forEach((gif) => {
+            gif.style.display = 'none';
+          });
+
+          // Reset all buttons to default style
+          gifButtons.forEach((btn) => {
+            btn.classList.remove('playing');
+          });
+
+          // Hide all buttons except the clicked one
+          gifButtons.forEach((btn) => {
+            if (btn !== button) {
+              btn.style.display = 'none';
+            }
+          });
+
+          // Show only the clicked GIF
+          gifs[index].style.display = 'block';
+
+          // Highlight the clicked button
+          button.classList.add('playing');
+
+          // Show "About Shivani (PDF)" button
+          aboutButton.style.display = 'block';
+        } else {
+          // Clicking the selected button again returns to the menu
+          gifs[index].style.display = 'none';
+
+          // Reset the button style
+          button.classList.remove('playing');
+
+          // Show all buttons again
+          gifButtons.forEach((btn) => {
+            btn.style.display = 'block';
+          });
+
+          // Hide "About Shivani (PDF)" button when returning to the menu
+          aboutButton.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
