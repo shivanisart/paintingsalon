@@ -49,7 +49,9 @@
       background-color: black;
       color: white;
       text-align: center;
-      /* Center-align the button */
+    }
+    .hidden {
+      display: none;
     }
   </style>
 </head>
@@ -83,6 +85,7 @@
   <script>
     const gifButtons = document.querySelectorAll('.gif-button');
     const gifs = document.querySelectorAll('img');
+    const aboutButton = document.getElementById('aboutButton');
 
     gifButtons.forEach((button, index) => {
       button.addEventListener('click', () => {
@@ -97,20 +100,39 @@
             btn.classList.remove('playing');
           });
 
+          // Hide all buttons except the clicked one
+          gifButtons.forEach((btn) => {
+            if (btn !== button) {
+              btn.style.display = 'none';
+            }
+          });
+
           // Show only the clicked GIF
           gifs[index].style.display = 'block';
 
           // Highlight the clicked button
           button.classList.add('playing');
+
+          // Show "About Shivani (PDF)" button
+          aboutButton.style.display = 'block';
         } else {
-          // Clicking a playing GIF returns to the menu
+          // Clicking the selected button again returns to the menu
           gifs[index].style.display = 'none';
 
           // Reset the button style
           button.classList.remove('playing');
+
+          // Show all buttons again
+          gifButtons.forEach((btn) => {
+            btn.style.display = 'block';
+          });
+
+          // Hide "About Shivani (PDF)" button when returning to the menu
+          aboutButton.style.display = 'none';
         }
       });
     });
   </script>
+
 </body>
 </html>
