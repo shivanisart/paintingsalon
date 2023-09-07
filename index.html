@@ -49,6 +49,7 @@
       background-color: black;
       color: white;
       text-align: center;
+      /* Center-align the button */
     }
   </style>
 </head>
@@ -77,36 +78,37 @@
   </div>
 
   <script>
-     const gifButtons = document.querySelectorAll('.gif-button');
-  const gifs = document.querySelectorAll('img');
+    const gifButtons = document.querySelectorAll('.gif-button');
+    const gifs = document.querySelectorAll('img');
 
-  gifButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-      if (!button.classList.contains('playing')) {
-        // Hide all GIFs
-        gifs.forEach((gif) => {
-          gif.style.display = 'none';
-        });
+    gifButtons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        if (!button.classList.contains('playing')) {
+          // Hide all GIFs
+          gifs.forEach((gif) => {
+            gif.style.display = 'none';
+          });
 
-        // Reset all buttons to default style
-        gifButtons.forEach((btn) => {
-          btn.classList.remove('playing');
-        });
+          // Reset all buttons to default style
+          gifButtons.forEach((btn) => {
+            btn.classList.remove('playing');
+            btn.style.display = 'block'; // Make all buttons visible initially
+          });
 
-        // Show only the clicked GIF
-        gifs[index].style.display = 'block';
+          // Show only the clicked GIF
+          gifs[index].style.display = 'block';
 
-        // Highlight the clicked button
-        button.classList.add('playing');
-      } else {
-        // Clicking a playing GIF returns to the menu
-        gifs[index].style.display = 'none';
+          // Highlight the clicked button
+          button.classList.add('playing');
+        } else {
+          // Clicking a playing GIF returns to the menu
+          gifs[index].style.display = 'none';
 
-        // Reset the button style
-        button.classList.remove('playing');
-      }
+          // Reset the button style
+          button.classList.remove('playing');
+        }
+      });
     });
-  });
   </script>
 </body>
 </html>
